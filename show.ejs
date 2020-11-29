@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=course.subject %>
+        <%=course.course %>
+    </title>
+    <style>
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+            width: 67%;
+        }
+
+        body {
+            padding-top: 10%;
+        }
+
+        td {
+            overflow: hidden;
+            background: #ddd6f3;
+            cursor: pointer;
+            background: #c2e59c;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #64b3f4, #c2e59c);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #64b3f4, #c2e59c);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+    </style>
+</head>
+
+<body>
+    <table class="center" border=1>
+        <tr>
+            <th>
+                <h1><%=course.subject %>
+                    <%=course.course %>
+                    <%=course.component %>
+                    - Section: <%=course.section %></strong></h1>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <ul>
+                    <li>
+                        <strong>Days:</strong> <%=course.days %><br>
+                        <strong>Start Time:</strong> <%=course.startTime %><br>
+                        <strong>End Time:</strong> <%=course.endTime %><br>
+                        <strong>From:</strong> <%=course.from %><br>
+                        <strong>Till:</strong> <%=course.till %><br>
+                        <strong>Duration:</strong> <%=course.duration %><br>
+                        <strong>Instruction Mode:</strong> <%=course.instructionMode %><br>
+                        <strong>Building:</strong> <%=course.building %><br>
+                        <strong>Room:</strong> <%=course.room %><br>
+                        <strong>Instructor:</strong> <%=course.instructor %><br>
+                        <strong>Enrl Capacity: </strong> <%=course.enrlCap %><br>
+                        <strong>Waitlist Capacity:</strong> <%=course.waitCap %></a><br>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+
+    </table>
+    <a href="/courses">Back to the Courses</a>
+    <br>
+    <br>
+
+    <form action="/courses/<%=course._id%>?_method=DELETE" method="POST">
+        <button>Delete the course</button>
+    </form>
+
+</body>
+
+</html>

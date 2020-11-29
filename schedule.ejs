@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Added Course</title>
+    <style>
+        h2 {
+            background: #007991;
+            background: #D31027;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #EA384D, #D31027);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #EA384D, #D31027);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+            color: black;
+            line-height: 1.1;
+            padding: 20px 0;
+            text-transform: uppercase;
+            font-weight: normal;
+            margin: 0;
+            font-size: 25px;
+            text-align: center;
+            letter-spacing: 0.4rem;
+            transition: letter-spacing, 2.0s;
+            text-shadow: 1px 1px 1px black;
+        }
+
+        h2:hover {
+            letter-spacing: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Added Classes in the schedule!</h2><br><br>
+    <a href="/courses">Back to All Courses</a><br><br>
+    
+    <table style="width:80%" border=1>
+        <tr>
+            <th id="M">Monday</th>
+            <th id="TU">Tuesday</th>
+            <th id="W">Wednesday</th>
+            <th id="TH">Thursday</th>
+            <th id="F">Friday</th>
+        </tr>
+        <tr>
+            <td>
+                <ul>
+                    <li><%=course.subject %>
+                        <%=course.course %>
+                        <%=course.component %>
+                        - Section: <%=course.section %><br>
+                    Days: <%=course.days %></li>
+                    Instruction Mode: <%=course.instructionMode %></li>
+                </ul>
+            </td>
+        </tr>
+        
+    </table>
+
+</body>
+
+</html>

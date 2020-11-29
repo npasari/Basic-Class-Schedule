@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Courses</title>
+    <style type="text/css">
+        h2 {
+            background: #007991;
+            background: #D31027;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #EA384D, #D31027);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #EA384D, #D31027);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+            color: black;
+            line-height: 1.1;
+            padding: 20px 0;
+            text-transform: uppercase;
+            font-weight: normal;
+            margin: 0;
+            font-size: 25px;
+            text-align: center;
+            letter-spacing: 0.4rem;
+            transition: letter-spacing, 2.0s;
+            text-shadow: 1px 1px 1px black;
+        }
+
+        h2:hover {
+            letter-spacing: 0.8rem;
+        }
+
+        ol {
+            text-align: center;
+            list-style-position: inside;
+        }
+
+        li {
+            text-align: center;
+            font-size: 22px;
+        }
+
+        #myInput {
+            background-position: 10px 12px;
+            background-repeat: no-repeat;
+            width: 77%;
+            font-size: 16px;
+            padding: 12px 20px 12px 40px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+        }
+
+
+
+        th {
+            padding: 15px;
+            font-size: 2em;
+            background: #C9D6FF;
+        }
+
+        .but2 {
+            background: #007991;
+            background: #D31027;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #EA384D, #D31027);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #EA384D, #D31027);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            font-size: 1em;
+            padding: 1.5rem;
+            border: 0;
+            font-weight: bold;
+            border-radius: 5px;
+            width: auto;
+            position: relative;
+
+        }
+
+        .but2:hover {
+            color: white;
+
+        }
+
+        #btn2:hover {
+            background: #2b2b22;
+            transition: all 0.3s;
+            color: white;
+        }
+
+        select {
+            font-size: 1.5em;
+        }
+
+        #btn2 {
+            font-size: 1.5em;
+            background: white;
+            color: black;
+        }
+
+        #b {
+            width: 70%;
+        }
+
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+            width: 67%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h2>SBU Class SChedule Builder</h2>
+    <input type="text" name="search" placeholder="Search" id="myInput" onkeyup="myFunction()">
+    <label for="search"></label>
+    <select name="search" id="search">
+        <option value="allFields">All Fields</option>
+        <option value="courseName">Course Name</option>
+        <option value="courseNum">Course Number</option>
+        <option value="instructor">Instructor</option>
+        <option value="day">Day</option>
+        <option value="time">Time</option>
+    </select>
+    <button id="btn2">Filter</button>
+
+    <table class="center">
+        <tr>
+            <th>Courses</th>
+        </tr>
+    </table>
+
+    <ol id="foo">
+        <% for(let course of courses) { %>
+        <div id="b">
+            <li><strong>
+                    <a href="/courses/<%=course._id%>"><%=course.subject %>
+                        <%=course.course %>
+                        <%=course.component %>
+                        - Section: <%=course.section %></a></strong>
+                        <form action="/courses/addToSchedule/<%=course._id%>" method="POST">
+                <input type="submit" class="but2" text="Add" style="float: right;"></form>
+                <br>
+                <a><strong>Days:</strong> <%=course.days %><br>
+                    <strong>Start Time:</strong> <%=course.startTime %><br>
+                    <strong>End Time:</strong> <%=course.endTime %><br>
+                    <strong>From:</strong> <%=course.from %><br>
+                    <strong>Till:</strong> <%=course.till %><br>
+                    <strong>Duration:</strong> <%=course.duration %><br>
+                    <strong>Instruction Mode:</strong> <%=course.instructionMode %><br>
+                    <strong>Building:</strong> <%=course.building %><br>
+                    <strong>Room:</strong> <%=course.room %><br>
+                    <strong>Instructor:</strong> <%=course.instructor %><br>
+                    <strong>Enrl Capacity: </strong> <%=course.enrlCap %><br>
+                    <strong>Waitlist Capacity:</strong> <%=course.waitCap %></a><br>
+            </li><br>
+
+        </div><% } %>
+    </ol>
+
+
+    <script type="text/javascript">
+        function myFunction() {
+            var input, filter, ol, li, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            ol = document.getElementById("foo");
+            li = ol.getElementsByTagName("li");
+            // console.log(ol);
+            for (i = 0; i < li.length; i++) {
+                b = li[i].getElementsByTagName("a")[0];
+                // console.log(b);
+                txtValue = b.textContent || b.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
